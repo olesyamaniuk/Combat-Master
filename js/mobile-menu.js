@@ -26,12 +26,47 @@ function toggleAnswer(element) {
 
   if (answer.style.display === "none" || answer.style.display === "") {
     answer.style.display = "block";
-    buttonImg.src = "/img/faq/arrow.png"; 
+    buttonImg.src = "/image/Vector (1).png"; 
   } else {
     answer.style.display = "none";
-    buttonImg.src = "/img/faq/icon.png"; 
+    buttonImg.src = "/image/Vector.png"; 
   }
 }
+const galleryList = document.querySelector(".gallery__list");
+const items = galleryList.querySelectorAll(".gallery__item");
+const showMoreBtn = document.getElementById("showMoreBtn");
+
+let visibleCount = 4; 
+
+function showImages() {
+  items.forEach((item, index) => {
+    if (index < visibleCount) {
+      item.classList.add("visible"); 
+    }
+  });
+
+  if (visibleCount >= items.length) {
+    showMoreBtn.style.display = "none"; 
+  }
+}
+
+
+showImages();
+
+
+showMoreBtn.addEventListener("click", () => {
+  visibleCount += 4;
+  showImages();
+});
+
+
+
+document.querySelectorAll(".gallery__item").forEach(item => {
+  item.addEventListener("click", function () {
+    this.classList.toggle("zoomed");
+  });
+});
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
